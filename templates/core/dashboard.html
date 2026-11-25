@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}<h1>{{org.name}} · Overview</h1><p class="muted">Financial activity summary · {{org.currency}}</p>
+<div class="cards">{% for label,value in cards %}<div class="card">{{label}}<div class="value">{{value}}</div></div>{% endfor %}
+<div class="card">Sales total<div class="value">{{sales}}</div></div><div class="card">Purchases total<div class="value">{{purchases}}</div></div><div class="card">Expenses total<div class="value">{{expenses}}</div></div><div class="card">Posted journals<div class="value">{{journals}}</div></div><div class="card">Contacts<div class="value">{{contacts}}</div></div><div class="card">Bank accounts<div class="value">{{bank_accounts}}</div></div></div>
+<div class="panel"><h3>Recent documents</h3><table><tr><th>Number</th><th>Type</th><th>Date</th><th>Total</th><th>Status</th></tr>{% for d in recent_docs %}<tr><td>{{d.number}}</td><td>{{d.get_doc_type_display}}</td><td>{{d.date}}</td><td>{{d.total}}</td><td>{{d.status}}</td></tr>{% empty %}<tr><td colspan="5">No transactions yet.</td></tr>{% endfor %}</table></div>
+{% endblock %}
